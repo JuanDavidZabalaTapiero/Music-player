@@ -206,10 +206,19 @@ main section.caratula .cont-cara div.main-part {
   justify-content: center;
   align-items: center;
 }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 main section.caratula .cont-cara div.main-part img {
   width: 90%;
-  border-radius: 30px;
+  border-radius: 50%;
   max-width: 600px;
+  animation: spin 5s linear infinite;
 }
 main section.caratula .cont-cara div.main-part .btns {
   width: 90%;
@@ -257,10 +266,12 @@ main section.caratula .cont-cara div.bottom-part .btns-cara {
 main section.caratula .cont-cara div.bottom-part .btns-cara i {
   color: white;
 }
-main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-arrow-clockwise, main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-shuffle {
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-arrow-clockwise,
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-shuffle {
   font-size: 20px;
 }
-main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-left, main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-right {
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-left,
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-right {
   font-size: 30px;
 }
 main section.caratula .cont-cara div.bottom-part .btns-cara .btn-play {

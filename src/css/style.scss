@@ -242,11 +242,23 @@ main {
                 justify-content: center;
                 align-items: center;
 
+                @keyframes spin {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+
                 img {
                     width: 90%;
-                    border-radius: 30px;
+                    border-radius: 50%;
                     max-width: 600px;
+                    animation: spin 5s linear infinite;
                 }
+
 
                 .btns {
                     width: 90%;
@@ -305,11 +317,13 @@ main {
                         color: white;
                     }
 
-                    i.bi-arrow-clockwise, i.bi-shuffle {
+                    i.bi-arrow-clockwise,
+                    i.bi-shuffle {
                         font-size: 20px;
                     }
 
-                    i.bi-chevron-bar-left, i.bi-chevron-bar-right {
+                    i.bi-chevron-bar-left,
+                    i.bi-chevron-bar-right {
                         font-size: 30px;
                     }
 
