@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito';
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    section.principal {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(140deg, rgba(77, 12, 71, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            text-align: center;
+
+            img {
+                width: 60%;
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                color: white;
+                font-size: 40px;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    .fade-out {
+        opacity: 0 !important;
+    }
+
+    section.lista-canciones {
+        width: 100%;
+        height: 100%;
+        background: #02101B;
+
+        div.cont-arriba {
+            width: 100%;
+            height: 10%;
+            padding: 25px;
+
+            a {
+                text-decoration: none;
+                color: white;
+
+                i {
+                    font-size: 25px;
+                }
+            }
+
+            h2 {
+                margin: 0;
+                color: white;
+                text-align: center;
+            }
+        }
+
+        div.songs {
+            width: 100%;
+            height: 70%;
+            padding: 0 25px;
+            overflow-y: scroll;
+            border-top: 1px solid white;
+
+            div.song {
+                width: 100%;
+                margin: 21px 0;
+
+                div.column-1 {
+                    width: 85%;
+
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+
+                    .info-song {
+                        height: 50px;
+                        margin-left: 15px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        p {
+                            margin: 0;
+                            color: white;
+                        }
+
+                        p.title {
+                            font-size: 18px;
+                            margin-bottom: 5px;
+                        }
+
+                        p.autor {
+                            font-size: 12px;
+                            color: gray;
+                        }
+                    }
+                }
+
+                div.column-2 {
+                    width: 15%;
+
+                    i {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .abajo {
+            width: 100%;
+            height: 20%;
+
+            .progress {
+                height: 2px;
+
+            }
+
+            div.song-active {
+                width: 100%;
+                height: 50%;
+                padding: 10px 25px;
+                background: linear-gradient(140deg, rgba(2, 16, 27, 1) 0%, rgba(102, 126, 145, 1) 100%);
+
+                div.column-1 {
+                    width: 85%;
+
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+
+                    .info-song {
+                        height: 50px;
+                        margin-left: 15px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        p {
+                            margin: 0;
+                            color: white;
+                        }
+
+                        p.title {
+                            font-size: 18px;
+                            margin-bottom: 5px;
+                        }
+
+                        p.autor {
+                            font-size: 12px;
+                            color: gray;
+                        }
+                    }
+                }
+
+                div.column-2 {
+                    width: 15%;
+
+                    i {
+                        color: white;
+                        font-size: 30px;
+                    }
+                }
+            }
+
+            div.btns {
+                width: 100%;
+                height: 50%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+
+                    i {
+                        color: white;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    section.caratula {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #797979;
+        display: none;
+
+        .cont-cara {
+            width: 100%;
+            height: 100%;
+            background: url(../img/Kiss\ me\ more\ -\ Doja\ car\ dif.png) no-repeat center;
+            background-size: cover;
+            padding: 25px;
+
+            div.top-part {
+                width: 100%;
+                height: 10%;
+
+                i {
+                    color: white;
+                    font-size: 25px;
+                }
+            }
+
+            div.main-part {
+                width: 100%;
+                height: 70%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 90%;
+                    border-radius: 30px;
+                    max-width: 600px;
+                }
+
+                .btns {
+                    width: 90%;
+                    margin: 20px;
+                    max-width: 600px;
+
+                    i {
+                        color: white;
+                        font-size: 25px;
+                    }
+
+                    h2 {
+                        color: white;
+                        font-size: 30px;
+                    }
+                }
+
+                p {
+                    color: rgb(212, 212, 212);
+                }
+            }
+
+            div.bottom-part {
+                width: 100%;
+                height: 20%;
+
+                .progress {
+                    height: 6px;
+                    background: rgba(255, 255, 255, 0.444);
+
+                    .progress-bar {
+                        background: white;
+                    }
+                }
+
+                .time {
+                    width: 100%;
+                    margin: 5px 0;
+
+                    span {
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+
+                .btns-cara {
+                    width: 100%;
+                    height: 70%;
+
+                    i {
+                        color: white;
+                    }
+
+                    i.bi-arrow-clockwise, i.bi-shuffle {
+                        font-size: 20px;
+                    }
+
+                    i.bi-chevron-bar-left, i.bi-chevron-bar-right {
+                        font-size: 30px;
+                    }
+
+                    .btn-play {
+                        width: 70px;
+                        height: 70px;
+                        background: white;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        i {
+                            color: #02101B;
+                            font-size: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.caratula.visible {
+        display: block;
+    }
+}

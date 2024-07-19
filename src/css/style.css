@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito";
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+main section.principal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(140deg, rgb(77, 12, 71) 0%, rgb(0, 0, 0) 100%);
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main section.principal div {
+  text-align: center;
+}
+main section.principal div img {
+  width: 60%;
+  margin-bottom: 40px;
+}
+main section.principal div h2 {
+  color: white;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+main .fade-out {
+  opacity: 0 !important;
+}
+main section.lista-canciones {
+  width: 100%;
+  height: 100%;
+  background: #02101B;
+}
+main section.lista-canciones div.cont-arriba {
+  width: 100%;
+  height: 10%;
+  padding: 25px;
+}
+main section.lista-canciones div.cont-arriba a {
+  text-decoration: none;
+  color: white;
+}
+main section.lista-canciones div.cont-arriba a i {
+  font-size: 25px;
+}
+main section.lista-canciones div.cont-arriba h2 {
+  margin: 0;
+  color: white;
+  text-align: center;
+}
+main section.lista-canciones div.songs {
+  width: 100%;
+  height: 70%;
+  padding: 0 25px;
+  overflow-y: scroll;
+  border-top: 1px solid white;
+}
+main section.lista-canciones div.songs div.song {
+  width: 100%;
+  margin: 21px 0;
+}
+main section.lista-canciones div.songs div.song div.column-1 {
+  width: 85%;
+}
+main section.lista-canciones div.songs div.song div.column-1 img {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+main section.lista-canciones div.songs div.song div.column-1 .info-song {
+  height: 50px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main section.lista-canciones div.songs div.song div.column-1 .info-song p {
+  margin: 0;
+  color: white;
+}
+main section.lista-canciones div.songs div.song div.column-1 .info-song p.title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+main section.lista-canciones div.songs div.song div.column-1 .info-song p.autor {
+  font-size: 12px;
+  color: gray;
+}
+main section.lista-canciones div.songs div.song div.column-2 {
+  width: 15%;
+}
+main section.lista-canciones div.songs div.song div.column-2 i {
+  color: white;
+}
+main section.lista-canciones .abajo {
+  width: 100%;
+  height: 20%;
+}
+main section.lista-canciones .abajo .progress {
+  height: 2px;
+}
+main section.lista-canciones .abajo div.song-active {
+  width: 100%;
+  height: 50%;
+  padding: 10px 25px;
+  background: linear-gradient(140deg, rgb(2, 16, 27) 0%, rgb(102, 126, 145) 100%);
+}
+main section.lista-canciones .abajo div.song-active div.column-1 {
+  width: 85%;
+}
+main section.lista-canciones .abajo div.song-active div.column-1 img {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+main section.lista-canciones .abajo div.song-active div.column-1 .info-song {
+  height: 50px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main section.lista-canciones .abajo div.song-active div.column-1 .info-song p {
+  margin: 0;
+  color: white;
+}
+main section.lista-canciones .abajo div.song-active div.column-1 .info-song p.title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+main section.lista-canciones .abajo div.song-active div.column-1 .info-song p.autor {
+  font-size: 12px;
+  color: gray;
+}
+main section.lista-canciones .abajo div.song-active div.column-2 {
+  width: 15%;
+}
+main section.lista-canciones .abajo div.song-active div.column-2 i {
+  color: white;
+  font-size: 30px;
+}
+main section.lista-canciones .abajo div.btns {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main section.lista-canciones .abajo div.btns a {
+  text-decoration: none;
+}
+main section.lista-canciones .abajo div.btns a i {
+  color: white;
+  font-size: 25px;
+}
+main section.caratula {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #797979;
+  display: none;
+}
+main section.caratula .cont-cara {
+  width: 100%;
+  height: 100%;
+  background: url(../img/Kiss\ me\ more\ -\ Doja\ car\ dif.png) no-repeat center;
+  background-size: cover;
+  padding: 25px;
+}
+main section.caratula .cont-cara div.top-part {
+  width: 100%;
+  height: 10%;
+}
+main section.caratula .cont-cara div.top-part i {
+  color: white;
+  font-size: 25px;
+}
+main section.caratula .cont-cara div.main-part {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main section.caratula .cont-cara div.main-part img {
+  width: 90%;
+  border-radius: 30px;
+  max-width: 600px;
+}
+main section.caratula .cont-cara div.main-part .btns {
+  width: 90%;
+  margin: 20px;
+  max-width: 600px;
+}
+main section.caratula .cont-cara div.main-part .btns i {
+  color: white;
+  font-size: 25px;
+}
+main section.caratula .cont-cara div.main-part .btns h2 {
+  color: white;
+  font-size: 30px;
+}
+main section.caratula .cont-cara div.main-part p {
+  color: rgb(212, 212, 212);
+}
+main section.caratula .cont-cara div.bottom-part {
+  width: 100%;
+  height: 20%;
+}
+main section.caratula .cont-cara div.bottom-part .progress {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.444);
+}
+main section.caratula .cont-cara div.bottom-part .progress .progress-bar {
+  background: white;
+}
+main section.caratula .cont-cara div.bottom-part .time {
+  width: 100%;
+  margin: 5px 0;
+}
+main section.caratula .cont-cara div.bottom-part .time span {
+  color: white;
+  font-weight: bold;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara {
+  width: 100%;
+  height: 70%;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara i {
+  color: white;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-arrow-clockwise, main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-shuffle {
+  font-size: 20px;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-left, main section.caratula .cont-cara div.bottom-part .btns-cara i.bi-chevron-bar-right {
+  font-size: 30px;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara .btn-play {
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main section.caratula .cont-cara div.bottom-part .btns-cara .btn-play i {
+  color: #02101B;
+  font-size: 40px;
+}
+main section.caratula.visible {
+  display: block;
+}/*# sourceMappingURL=style.css.map */
