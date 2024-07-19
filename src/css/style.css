@@ -220,6 +220,9 @@ main section.caratula .cont-cara div.main-part .btns i {
   color: white;
   font-size: 25px;
 }
+main section.caratula .cont-cara div.main-part .btns .red {
+  color: rgb(255, 71, 71);
+}
 main section.caratula .cont-cara div.main-part .btns h2 {
   color: white;
   font-size: 30px;

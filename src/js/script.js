@@ -62,6 +62,44 @@ document.addEventListener("DOMContentLoaded", function () {
         // Elimina la clase "visible" para ocultar la carátula
         caraturla.classList.remove('visible');
     });
+
+    // Alterna el color del icono del corazón y cambia la clase al hacer clic
+    document.querySelector(".bi-heart").addEventListener('click', function () {
+        this.classList.toggle('red');
+        this.classList.toggle('bi-heart');
+        this.classList.toggle('bi-heart-fill');
+    });
+
+    // Reproduce una canción al azar al hacer clic en el icono de mezcla
+    document.querySelector(".bi-shuffle").addEventListener('click', function () {
+        var songs = document.querySelectorAll(".song");
+        var randomIndex = Math.floor(Math.random() * songs.length);
+        var randomSong = songs[randomIndex];
+
+        var imageD = randomSong.getAttribute('data-imgd');
+        var title = randomSong.getAttribute('data-title');
+        var artist = randomSong.getAttribute('data-artist');
+        var img = randomSong.getAttribute('data-img');
+        var audioSrc = randomSong.getAttribute('data-audio');
+
+        // Actualiza la carátula con la información de la canción
+        var caratula = document.querySelector(".caratula");
+        caratula.querySelector(".main-part img").src = img;
+        caratula.querySelector("h2").textContent = title;
+        caratula.querySelector("p").textContent = artist;
+
+        // Cambia la imagen de fondo de "cont-cara"
+        var contCara = caratula.querySelector(".cont-cara");
+        contCara.style.backgroundImage = `url(${imageD})`;
+
+        // Actualiza la fuente del elemento de audio
+        var audioElement = document.getElementById('audio');
+        audioElement.src = audioSrc;
+        audioElement.play();
+
+        // Añade la clase "visible" para mostrar la carátula
+        caratula.classList.add('visible');
+    });
 });
 
 // Variables para manejar la reproducción de la canción y la barra de progreso
