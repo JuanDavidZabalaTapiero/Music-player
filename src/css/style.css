@@ -186,7 +186,7 @@ main section.caratula {
 main section.caratula .cont-cara {
   width: 100%;
   height: 100%;
-  background: url(../img/Kiss\ me\ more\ -\ Doja\ car\ dif.png) no-repeat center;
+  background: url() no-repeat center;
   background-size: cover;
   padding: 25px;
 }
@@ -223,6 +223,7 @@ main section.caratula .cont-cara div.main-part .btns i {
 main section.caratula .cont-cara div.main-part .btns h2 {
   color: white;
   font-size: 30px;
+  text-align: center;
 }
 main section.caratula .cont-cara div.main-part p {
   color: rgb(212, 212, 212);

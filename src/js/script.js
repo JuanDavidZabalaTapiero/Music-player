@@ -17,22 +17,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ABRIR LA CARÁTULA
 // Selecciona todos los elementos con la clase "column-1" y les añade un evento click
-document.querySelectorAll(".column-1").forEach(function (element) {
-    element.addEventListener('click', function () {
+document.addEventListener("DOMContentLoaded", function () {
+    // Selecciona todos los elementos con la clase "column-1" y les añade un evento click
+    document.querySelectorAll(".column-1").forEach(function (element) {
+        element.addEventListener('click', function () {
+            // Obtiene los datos de la canción desde los atributos data
+            var songElement = element.closest('.song');
+
+            var imageD = songElement.getAttribute('data-imgd');
+            var img = songElement.getAttribute('data-img');
+            var title = songElement.getAttribute('data-title');
+            var artist = songElement.getAttribute('data-artist');
+            var audioSrc = songElement.getAttribute('data-audio');
+
+            // Actualiza la fuente del elemento de audio
+            var audioElement = document.getElementById('audio');
+            audioElement.src = audioSrc;
+            audioElement.play();
+
+            var caratula = document.querySelector(".caratula");
+
+            // CAMBIAR EL ARTISTA
+            caratula.querySelector("p").textContent = artist;
+            // CAMBIAR LA IMG MAIN
+            caratula.querySelector(".main-part img").src = img;
+            // CAMBIAR EL TÍTULO
+            caratula.querySelector("h2").textContent = title;
+
+            var contCara = caratula.querySelector(".cont-cara");
+
+            // CAMBIAR EL FONDO DIFUMINADO
+            contCara.style.backgroundImage = `url(${imageD})`;
+
+            // HACER VISIBLE A LA CARÁTULA
+            caratula.classList.add('visible');
+        });
+    });
+
+    // CERRAR LA CARÁTULA
+    // Selecciona el elemento con la clase "bi-x-lg" y le añade un evento click
+    document.querySelector(".bi-x-lg").addEventListener('click', function () {
         // Selecciona el elemento con la clase "caratula"
         var caraturla = document.querySelector(".caratula");
-        // Añade la clase "visible" para mostrar la carátula
-        caraturla.classList.add('visible');
+        // Elimina la clase "visible" para ocultar la carátula
+        caraturla.classList.remove('visible');
     });
-});
-
-// CERRAR LA CARÁTULA
-// Selecciona el elemento con la clase "bi-x-lg" y le añade un evento click
-document.querySelector(".bi-x-lg").addEventListener('click', function () {
-    // Selecciona el elemento con la clase "caratula"
-    var caraturla = document.querySelector(".caratula");
-    // Elimina la clase "visible" para ocultar la carátula
-    caraturla.classList.remove('visible');
 });
 
 // Variables para manejar la reproducción de la canción y la barra de progreso
