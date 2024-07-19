@@ -25,3 +25,21 @@ document.querySelector(".bi-x-lg").addEventListener('click', function () {
 
     caraturla.classList.remove('visible');
 })
+
+
+// HACER SONAR LA CANCIÓN
+const btnPlay = document.getElementById('btn-play');
+const audio = document.getElementById('audio');
+const playIcon = document.getElementById('play-icon');
+
+btnPlay.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playIcon.classList.remove('bi-play-fill');
+        playIcon.classList.add('bi-pause-fill');
+    } else {
+        audio.pause();
+        playIcon.classList.remove('bi-pause-fill');
+        playIcon.classList.add('bi-play-fill');
+    }
+});
