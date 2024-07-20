@@ -55,12 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // CERRAR LA CARÁTULA
-    // Selecciona el elemento con la clase "bi-x-lg" y le añade un evento click
-    document.querySelector(".bi-x-lg").addEventListener('click', function () {
-        // Selecciona el elemento con la clase "caratula"
-        var caraturla = document.querySelector(".caratula");
-        // Elimina la clase "visible" para ocultar la carátula
-        caraturla.classList.remove('visible');
+    document.querySelectorAll(".bi-x-lg, .bi-arrow-left").forEach(function(element) {
+        element.addEventListener('click', function () {
+            // Selecciona el elemento con la clase "caratula"
+            var caraturla = document.querySelector(".caratula");
+            // Elimina la clase "visible" para ocultar la carátula
+            caraturla.classList.remove('visible');
+        });
     });
 
     // Alterna el color del icono del corazón y cambia la clase al hacer clic
