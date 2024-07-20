@@ -216,8 +216,8 @@ main section.caratula .cont-cara div.main-part {
 }
 main section.caratula .cont-cara div.main-part img {
   width: 90%;
+  max-width: 400px;
   border-radius: 50%;
-  max-width: 600px;
   animation: spin 5s linear infinite;
 }
 main section.caratula .cont-cara div.main-part .btns {
