@@ -1,3 +1,5 @@
+// MOSTRAR LA PANTALLA DE PRESENTACIÓN
+
 // Ejecuta la función cuando todo el contenido del DOM ha sido cargado
 document.addEventListener("DOMContentLoaded", function () {
   // Establece un temporizador de 1 segundo
@@ -19,94 +21,45 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 1000); // Espera 1 segundo antes de ejecutar el código dentro de setTimeout
 });
 
-// ABRIR LA CARÁTULA
-// Selecciona todos los elementos con la clase "column-1" y les añade un evento click
-document.addEventListener("DOMContentLoaded", function () {
-  // Selecciona todos los elementos con la clase "column-1" y les añade un evento click
-  document.querySelectorAll(".column-1").forEach(function (element) {
-    element.addEventListener("click", function () {
-      // Obtiene los datos de la canción desde los atributos data
-      var songElement = element.closest(".song");
+// ARRAY DE LAS CANCIONES
 
-      var imageD = songElement.getAttribute("data-imgd");
-      var img = songElement.getAttribute("data-img");
-      var title = songElement.getAttribute("data-title");
-      var artist = songElement.getAttribute("data-artist");
-      var audioSrc = songElement.getAttribute("data-audio");
+// Array para almacenar todas las canciones
+let songs = [];
+document.querySelectorAll(".song").forEach(function (songElement) {
+  songs.push(songElement);
+});
 
-      // Actualiza la fuente del elemento de audio
-      var audioElement = document.getElementById("audio");
-      audioElement.src = audioSrc;
-      audioElement.play();
+// REEMPLAZAR LOS VALORES DE LA CARÁTULA
 
-      var caratula = document.querySelector(".caratula");
+// Función para reproducir una canción
+function playSong(songElement) {
+  var imageD = songElement.getAttribute("data-imgd");
+  var img = songElement.getAttribute("data-img");
+  var title = songElement.getAttribute("data-title");
+  var artist = songElement.getAttribute("data-artist");
+  var audioSrc = songElement.getAttribute("data-audio");
 
-      // CAMBIAR EL ARTISTA
-      caratula.querySelector("p").textContent = artist;
-      // CAMBIAR LA IMG MAIN
-      caratula.querySelector(".main-part img").src = img;
-      // CAMBIAR EL TÍTULO
-      caratula.querySelector("h2").textContent = title;
+  // Actualiza la fuente del elemento de audio
+  var audioElement = document.getElementById("audio");
+  audioElement.src = audioSrc;
+  audioElement.play();
 
-      var contCara = caratula.querySelector(".cont-cara");
+  var caratula = document.querySelector(".caratula");
 
-      // CAMBIAR EL FONDO DIFUMINADO
-      contCara.style.backgroundImage = `url(${imageD})`;
+  // CAMBIAR EL ARTISTA
+  caratula.querySelector("p").textContent = artist;
+  // CAMBIAR LA IMG MAIN
+  caratula.querySelector(".main-part img").src = img;
+  // CAMBIAR EL TÍTULO
+  caratula.querySelector("h2").textContent = title;
 
-      // HACER VISIBLE A LA CARÁTULA
-      caratula.classList.add("visible");
-    });
-  });
+  var contCara = caratula.querySelector(".cont-cara");
 
-  // CERRAR LA CARÁTULA
-  document
-    .querySelectorAll(".bi-x-lg, .bi-arrow-left")
-    .forEach(function (element) {
-      element.addEventListener("click", function () {
-        // Selecciona el elemento con la clase "caratula"
-        var caraturla = document.querySelector(".caratula");
-        // Elimina la clase "visible" para ocultar la carátula
-        caraturla.classList.remove("visible");
-      });
-    });
+  // CAMBIAR EL FONDO DIFUMINADO
+  contCara.style.backgroundImage = `url(${imageD})`;
 
-  // Alterna el color del icono del corazón y cambia la clase al hacer clic
-  document.querySelector(".bi-heart").addEventListener("click", function () {
-    this.classList.toggle("red");
-    this.classList.toggle("bi-heart");
-    this.classList.toggle("bi-heart-fill");
-  });
-
-  // Reproduce una canción al azar al hacer clic en el icono de mezcla
-  document.querySelector(".bi-shuffle").addEventListener("click", function () {
-    var songs = document.querySelectorAll(".song");
-    var randomIndex = Math.floor(Math.random() * songs.length);
-    var randomSong = songs[randomIndex];
-
-    var imageD = randomSong.getAttribute("data-imgd");
-    var title = randomSong.getAttribute("data-title");
-    var artist = randomSong.getAttribute("data-artist");
-    var img = randomSong.getAttribute("data-img");
-    var audioSrc = randomSong.getAttribute("data-audio");
-
-    // Actualiza la carátula con la información de la canción
-    var caratula = document.querySelector(".caratula");
-    caratula.querySelector(".main-part img").src = img;
-    caratula.querySelector("h2").textContent = title;
-    caratula.querySelector("p").textContent = artist;
-
-    // Cambia la imagen de fondo de "cont-cara"
-    var contCara = caratula.querySelector(".cont-cara");
-    contCara.style.backgroundImage = `url(${imageD})`;
-
-    // Actualiza la fuente del elemento de audio
-    var audioElement = document.getElementById("audio");
-    audioElement.src = audioSrc;
-    audioElement.play();
-
-    // Añade la clase "visible" para mostrar la carátula
-    caratula.classList.add("visible");
-  });
+  // HACER VISIBLE A LA CARÁTULA
+  caratula.classList.add("visible");
 
   // Reinicia la canción al hacer clic en el icono de recargar
   document
@@ -116,6 +69,71 @@ document.addEventListener("DOMContentLoaded", function () {
       audioElement.currentTime = 0;
       audioElement.play();
     });
+}
+
+// Variable para almacenar el índice de la canción actual
+let currentSongIndex = -1;
+
+// Reproducir la canción anterior
+document
+  .querySelector(".bi-chevron-bar-left")
+  .addEventListener("click", function () {
+    if (currentSongIndex > 0) {
+      currentSongIndex--;
+      playSong(songs[currentSongIndex]);
+    }
+  });
+
+// Reproducir la siguiente canción
+document
+  .querySelector(".bi-chevron-bar-right")
+  .addEventListener("click", function () {
+    if (currentSongIndex < songs.length - 1) {
+      currentSongIndex++;
+      playSong(songs[currentSongIndex]);
+    }
+  });
+
+// Actualizar el índice y reproducir la canción seleccionada al hacer clic en una canción
+document.querySelectorAll(".column-1").forEach(function (element, index) {
+  element.addEventListener("click", function () {
+    currentSongIndex = index;
+    playSong(element.closest(".song"));
+  });
+});
+
+// Reiniciar la canción al hacer clic en el icono de recargar
+document
+  .querySelector(".bi-arrow-clockwise")
+  .addEventListener("click", function () {
+    var audioElement = document.getElementById("audio");
+    audioElement.currentTime = 0;
+    audioElement.play();
+  });
+
+// Cerrar la carátula
+document
+  .querySelectorAll(".bi-x-lg, .bi-arrow-left")
+  .forEach(function (element) {
+    element.addEventListener("click", function () {
+      var caraturla = document.querySelector(".caratula");
+      caraturla.classList.remove("visible");
+    });
+  });
+
+// Alternar el icono del corazón al hacer clic
+document.querySelector(".bi-heart").addEventListener("click", function () {
+  this.classList.toggle("red");
+  this.classList.toggle("bi-heart");
+  this.classList.toggle("bi-heart-fill");
+});
+
+// Reproducir una canción al azar al hacer clic en el icono de mezcla
+document.querySelector(".bi-shuffle").addEventListener("click", function () {
+  var randomIndex = Math.floor(Math.random() * songs.length);
+  var randomSong = songs[randomIndex];
+  currentSongIndex = randomIndex;
+  playSong(randomSong);
 });
 
 // Variables para manejar la reproducción de la canción y la barra de progreso
@@ -126,8 +144,20 @@ const progressBar = document.getElementById("progress-bar"); // Barra de progres
 const currentTimeElem = document.getElementById("current-time"); // Tiempo actual
 const totalTimeElem = document.getElementById("total-time"); // Tiempo total
 
-// HACER SONAR LA CANCIÓN
-// Añade un evento click al botón de reproducción
+// MOVER LA BARRA DE PROGRESO DE LA CANCIÓN
+// Añade un evento para actualizar la barra de progreso mientras la canción se reproduce
+audio.addEventListener("timeupdate", () => {
+  // Obtiene el tiempo actual de reproducción y la duración total de la canción
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  // Calcula el porcentaje de progreso
+  const progress = (currentTime / duration) * 100;
+  // Actualiza el ancho de la barra de progreso
+  progressBar.style.width = progress + "%";
+  // Actualiza el texto del tiempo actual
+  currentTimeElem.textContent = formatTime(currentTime);
+});
+
 btnPlay.addEventListener("click", () => {
   // Si la canción está pausada, la reproduce
   if (audio.paused) {
@@ -142,20 +172,6 @@ btnPlay.addEventListener("click", () => {
     playIcon.classList.remove("bi-pause-fill");
     playIcon.classList.add("bi-play-fill");
   }
-});
-
-// MOVER LA BARRA DE PROGRESO DE LA CANCIÓN
-// Añade un evento para actualizar la barra de progreso mientras la canción se reproduce
-audio.addEventListener("timeupdate", () => {
-  // Obtiene el tiempo actual de reproducción y la duración total de la canción
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  // Calcula el porcentaje de progreso
-  const progress = (currentTime / duration) * 100;
-  // Actualiza el ancho de la barra de progreso
-  progressBar.style.width = progress + "%";
-  // Actualiza el texto del tiempo actual
-  currentTimeElem.textContent = formatTime(currentTime);
 });
 
 // Añade un evento para mostrar la duración total de la canción cuando se carga la metadata
