@@ -1,7 +1,4 @@
-// MOSTRAR LA PANTALLA DE PRESENTACIÓN
-
-// Ejecuta la función cuando todo el contenido del DOM ha sido cargado
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   // Establece un temporizador de 1 segundo
   setTimeout(function () {
     // Selecciona el elemento con la clase "principal"
