@@ -68,8 +68,10 @@ document
   .addEventListener("click", function () {
     if (currentSongIndex > 0) {
       currentSongIndex--;
-      playSong(songs[currentSongIndex]);
+    } else {
+      currentSongIndex = songs.length - 1; // Ir a la última canción si está en la primera
     }
+    playSong(songs[currentSongIndex]);
   });
 
 // Reproducir la siguiente canción
@@ -78,8 +80,10 @@ document
   .addEventListener("click", function () {
     if (currentSongIndex < songs.length - 1) {
       currentSongIndex++;
-      playSong(songs[currentSongIndex]);
+    } else {
+      currentSongIndex = 0; // Ir a la primera canción si está en la última
     }
+    playSong(songs[currentSongIndex]);
   });
 
 // Actualizar el índice y reproducir la canción seleccionada al hacer clic en una canción
