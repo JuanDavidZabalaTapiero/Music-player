@@ -1,4 +1,4 @@
-// CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
+// 1. CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
 window.addEventListener("load", function () {
   // Establece un temporizador de 1 segundo
   setTimeout(function () {
@@ -25,7 +25,7 @@ document.querySelectorAll(".song").forEach(function (songElement) {
   songs.push(songElement);
 });
 
-// PARA REPRODUCIR LA CANCIÓN
+// 2. PARA REPRODUCIR LA CANCIÓN
 
 // Función para reproducir una canción
 function playSong(songElement) {
@@ -178,6 +178,8 @@ document.querySelector(".abajo").addEventListener("click", function (event) {
 
 // Variable para almacenar el índice de la canción actual
 let currentSongIndex = -1;
+
+// 3. BOTONES Y ELEMENTOS DE LA CARÁTULA DE LA CANCIÓN
 
 // Reproducir la canción anterior
 document
