@@ -1,3 +1,4 @@
+// CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
 window.addEventListener("load", function () {
   // Establece un temporizador de 1 segundo
   setTimeout(function () {
@@ -18,46 +19,162 @@ window.addEventListener("load", function () {
   }, 1000); // Espera 1 segundo antes de ejecutar el código dentro de setTimeout
 });
 
-// ARRAY DE LAS CANCIONES
-
 // Array para almacenar todas las canciones
 let songs = [];
 document.querySelectorAll(".song").forEach(function (songElement) {
   songs.push(songElement);
 });
 
-// REEMPLAZAR LOS VALORES DE LA CARÁTULA
+// PARA REPRODUCIR LA CANCIÓN
 
 // Función para reproducir una canción
 function playSong(songElement) {
+
+  // 1. CAMBIAR LA INFO DE LA PLANTILLA "CARATULA"
+
   var imageD = songElement.getAttribute("data-imgd");
   var img = songElement.getAttribute("data-img");
   var title = songElement.getAttribute("data-title");
   var artist = songElement.getAttribute("data-artist");
   var audioSrc = songElement.getAttribute("data-audio");
 
-  // Actualiza la fuente del elemento de audio
   var audioElement = document.getElementById("audio");
-  audioElement.src = audioSrc;
-  audioElement.play();
 
-  var caratula = document.querySelector(".caratula");
+  // Solo actualiza la fuente y la información si la canción ha cambiado
 
-  // CAMBIAR EL ARTISTA
-  caratula.querySelector("p").textContent = artist;
-  // CAMBIAR LA IMG MAIN
-  caratula.querySelector(".main-part img").src = img;
-  // CAMBIAR EL TÍTULO
-  caratula.querySelector("h2").textContent = title;
+  // CUANDO SELECCIONO UNA CANCIÓN SE GUARDA SU "SRC"
+  // ENTONCES, SI NO HAY UNA CANCIÓN ENTONCES REPRODUCE LA SELECCIONADA
+  if (audioElement.src !== audioSrc) {
+    audioElement.src = audioSrc;
+    audioElement.play();
 
-  var contCara = caratula.querySelector(".cont-cara");
+    // Espera a que se cargue la metadata del audio
+    audioElement.addEventListener("loadedmetadata", function () {
+      var duration = audioElement.duration;
+      var totalTimeActive = formatTime(duration); // Formatea el tiempo
 
-  // CAMBIAR EL FONDO DIFUMINADO
-  contCara.style.backgroundImage = `url(${imageD})`;
+      var caratula = document.querySelector(".caratula");
 
-  // HACER VISIBLE A LA CARÁTULA
-  caratula.classList.add("visible");
+      // CAMBIAR EL ARTISTA
+      caratula.querySelector("p").textContent = artist;
+      // CAMBIAR LA IMG MAIN
+      caratula.querySelector(".main-part img").src = img;
+      // CAMBIAR EL TÍTULO
+      caratula.querySelector("h2").textContent = title;
+
+      var contCara = caratula.querySelector(".cont-cara");
+
+      // CAMBIAR EL FONDO DIFUMINADO
+      contCara.style.backgroundImage = `url(${imageD})`;
+
+      // HACER VISIBLE A LA CARÁTULA
+      caratula.classList.add("visible");
+
+      // CAMBIO EL ESTILO DEL CONTENEDOR SONGS
+      let contSongs = document.querySelector(".songs");
+      contSongs.style.height = "70%";
+
+      // Seleccionar el elemento con la clase "abajo"
+      var abajoElement = document.querySelector(".abajo");
+
+      // Limpiar los elementos existentes de progreso y canción
+
+      // 2. PARA CREAR LA VISTA DE LA CANCIÓN ACTUAL
+
+      var existingProgress = abajoElement.querySelector(".progress");
+      var existingSong = abajoElement.querySelector(".song-active");
+
+      if (existingProgress) existingProgress.remove();
+      if (existingSong) existingSong.remove();
+
+      // CREAR EL VIEW DE LA CANCIÓN ACTUAL
+      var progressDiv = document.createElement("div");
+      progressDiv.className = "progress";
+      progressDiv.setAttribute("role", "progressbar");
+      progressDiv.setAttribute("aria-label", "Basic example");
+      progressDiv.setAttribute("aria-valuenow", "75");
+      progressDiv.setAttribute("aria-valuemin", "0");
+      progressDiv.setAttribute("aria-valuemax", "100");
+
+      var progressBarDiv = document.createElement("div");
+      progressBarDiv.className = "progress-bar";
+      progressBarDiv.style.width = "75%";
+
+      progressDiv.appendChild(progressBarDiv);
+
+      var songActiveDiv = document.createElement("div");
+      songActiveDiv.className =
+        "song-active d-flex justify-content-between align-items-center";
+
+      var column1Div = document.createElement("div");
+      column1Div.className = "column-1 d-flex align-items-center";
+
+      var imgActive = document.createElement("img");
+      imgActive.src = img;
+      imgActive.alt = "";
+
+      var infoSongDiv = document.createElement("div");
+      infoSongDiv.className = "info-song";
+
+      var titleP = document.createElement("p");
+      titleP.className = "title";
+      titleP.textContent = title;
+
+      var autorP = document.createElement("p");
+      autorP.className = "autor";
+      autorP.textContent = `${totalTimeActive} | ${artist}`;
+
+      infoSongDiv.appendChild(titleP);
+      infoSongDiv.appendChild(autorP);
+
+      column1Div.appendChild(imgActive);
+      column1Div.appendChild(infoSongDiv);
+
+      var column2Div = document.createElement("div");
+      column2Div.className =
+        "column-2 d-flex align-items-center justify-content-center";
+
+      var playIcon = document.createElement("i");
+      playIcon.className = "bi bi-play-fill";
+
+      column2Div.appendChild(playIcon);
+
+      songActiveDiv.appendChild(column1Div);
+      songActiveDiv.appendChild(column2Div);
+
+      abajoElement.style.height = "20%";
+      abajoElement.style.display = "block";
+      abajoElement.style.border = "0px";
+
+      abajoElement.insertBefore(songActiveDiv, abajoElement.firstChild);
+      abajoElement.insertBefore(progressDiv, abajoElement.firstChild);
+
+      var btnsElement = document.querySelector(".btns-abajo");
+      btnsElement.style.borderTop = "2px solid white";
+
+      // Actualizar la barra de progreso en tiempo real
+      audioElement.addEventListener("timeupdate", function () {
+        var currentTime = audioElement.currentTime;
+        var duration = audioElement.duration;
+        var progress = (currentTime / duration) * 100;
+        progressBarDiv.style.width = progress + "%";
+        progressDiv.setAttribute("aria-valuenow", progress); // Actualiza el valor actual
+      });
+    });
+  } else {
+    // Solo muestra la carátula si la canción ya está en reproducción
+    var caratula = document.querySelector(".caratula");
+    caratula.classList.add("visible");
+  }
 }
+
+// Añadir evento de clic en song-active para mostrar la carátula sin reiniciar la canción
+document.querySelector(".abajo").addEventListener("click", function (event) {
+  if (event.target.closest(".song-active")) {
+    var caratula = document.querySelector(".caratula");
+    caratula.classList.add("visible");
+  }
+});
 
 // Variable para almacenar el índice de la canción actual
 let currentSongIndex = -1;
