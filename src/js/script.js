@@ -183,3 +183,15 @@ function formatTime(seconds) {
   // Devuelve el tiempo formateado en "minutos:segundos"
   return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
 }
+
+const progressBarContainer = document.querySelector(".progress"); // Contenedor de la barra de progreso
+
+progressBarContainer.addEventListener("click", (event) => {
+  const rect = progressBarContainer.getBoundingClientRect();
+  const offsetX = event.clientX - rect.left;
+  const totalWidth = rect.width;
+  const clickPosition = offsetX / totalWidth;
+  const newTime = clickPosition * audio.duration;
+
+  audio.currentTime = newTime;
+});

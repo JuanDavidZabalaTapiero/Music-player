@@ -22,7 +22,7 @@ main section.principal {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(140deg, rgb(77, 12, 71) 0%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(125deg, rgb(24, 24, 149) 35%, rgb(168, 24, 36) 100%);
   opacity: 1;
   transition: opacity 1s ease-in-out;
   display: flex;
@@ -47,7 +47,7 @@ main .fade-out {
 main section.lista-canciones {
   width: 100%;
   height: 100%;
-  background: #02101B;
+  background: linear-gradient(125deg, rgb(24, 24, 149) 35%, rgb(168, 24, 36) 100%);
 }
 main section.lista-canciones div.cont-arriba {
   width: 100%;
@@ -123,7 +123,7 @@ main section.lista-canciones .abajo div.song-active {
   width: 100%;
   height: 50%;
   padding: 10px 25px;
-  background: linear-gradient(140deg, rgb(2, 16, 27) 0%, rgb(102, 126, 145) 100%);
+  background: linear-gradient(125deg, rgb(65, 65, 189) 35%, rgb(194, 67, 77) 100%);
 }
 main section.lista-canciones .abajo div.song-active div.column-1 {
   width: 85%;
