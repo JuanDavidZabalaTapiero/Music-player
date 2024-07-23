@@ -29,7 +29,6 @@ document.querySelectorAll(".song").forEach(function (songElement) {
 
 // Función para reproducir una canción
 function playSong(songElement) {
-
   // 1. CAMBIAR LA INFO DE LA PLANTILLA "CARATULA"
 
   var imageD = songElement.getAttribute("data-imgd");
@@ -135,7 +134,20 @@ function playSong(songElement) {
         "column-2 d-flex align-items-center justify-content-center";
 
       var playIcon = document.createElement("i");
-      playIcon.className = "bi bi-play-fill";
+      playIcon.className = "bi bi-pause-fill";
+
+      // Añadir el manejador de eventos al icono
+      column2Div.addEventListener("click", function () {
+        if (audioElement.paused) {
+          audioElement.play();
+          playIcon.classList.remove("bi-play-fill");
+          playIcon.classList.add("bi-pause-fill");
+        } else {
+          audioElement.pause();
+          playIcon.classList.remove("bi-pause-fill");
+          playIcon.classList.add("bi-play-fill");
+        }
+      });
 
       column2Div.appendChild(playIcon);
 
@@ -170,7 +182,7 @@ function playSong(songElement) {
 
 // Añadir evento de clic en song-active para mostrar la carátula sin reiniciar la canción
 document.querySelector(".abajo").addEventListener("click", function (event) {
-  if (event.target.closest(".song-active")) {
+  if (event.target.closest(".column-1")) {
     var caratula = document.querySelector(".caratula");
     caratula.classList.add("visible");
   }
