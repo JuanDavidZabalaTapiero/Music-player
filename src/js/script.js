@@ -191,6 +191,20 @@ document.querySelector(".abajo").addEventListener("click", function (event) {
 // Variable para almacenar el índice de la canción actual
 let currentSongIndex = -1;
 
+// Actualizar el índice y reproducir la canción seleccionada al hacer clic en una canción
+document.querySelectorAll(".column-1").forEach(function (element, index) {
+  element.addEventListener("click", function () {
+
+    if (currentSongIndex == index) {
+      var caratula = document.querySelector(".caratula");
+      caratula.classList.add("visible");
+    } else {
+      currentSongIndex = index;
+      playSong(element.closest(".song"));
+    }
+  });
+});
+
 // 3. BOTONES Y ELEMENTOS DE LA CARÁTULA DE LA CANCIÓN
 
 // Reproducir la canción anterior
@@ -216,14 +230,6 @@ document
     }
     playSong(songs[currentSongIndex]);
   });
-
-// Actualizar el índice y reproducir la canción seleccionada al hacer clic en una canción
-document.querySelectorAll(".column-1").forEach(function (element, index) {
-  element.addEventListener("click", function () {
-    currentSongIndex = index;
-    playSong(element.closest(".song"));
-  });
-});
 
 // Reiniciar la canción al hacer clic en el icono de recargar
 document
