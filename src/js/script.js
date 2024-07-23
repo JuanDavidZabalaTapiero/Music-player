@@ -57,15 +57,6 @@ function playSong(songElement) {
 
   // HACER VISIBLE A LA CARÁTULA
   caratula.classList.add("visible");
-
-  // Reinicia la canción al hacer clic en el icono de recargar
-  document
-    .querySelector(".bi-arrow-clockwise")
-    .addEventListener("click", function () {
-      var audioElement = document.getElementById("audio");
-      audioElement.currentTime = 0;
-      audioElement.play();
-    });
 }
 
 // Variable para almacenar el índice de la canción actual
