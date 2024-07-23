@@ -104,7 +104,7 @@ main section.lista-canciones div.songs div.song div.column-1 .info-song p.title 
 }
 main section.lista-canciones div.songs div.song div.column-1 .info-song p.autor {
   font-size: 12px;
-  color: gray;
+  color: lightsteelblue;
 }
 main section.lista-canciones div.songs div.song div.column-2 {
   width: 15%;
@@ -152,7 +152,7 @@ main section.lista-canciones .abajo div.song-active div.column-1 .info-song p.ti
 }
 main section.lista-canciones .abajo div.song-active div.column-1 .info-song p.autor {
   font-size: 12px;
-  color: gray;
+  color: lightsteelblue;
 }
 main section.lista-canciones .abajo div.song-active div.column-2 {
   width: 15%;
