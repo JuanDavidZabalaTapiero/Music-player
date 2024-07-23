@@ -150,6 +150,16 @@ audio.addEventListener("timeupdate", () => {
   currentTimeElem.textContent = formatTime(currentTime);
 });
 
+// Evento para manejar el fin de la canción y reproducir la siguiente
+audio.addEventListener("ended", () => {
+  if (currentSongIndex < songs.length - 1) {
+    currentSongIndex++;
+  } else {
+    currentSongIndex = 0; // Ir a la primera canción si está en la última
+  }
+  playSong(songs[currentSongIndex]);
+});
+
 btnPlay.addEventListener("click", () => {
   // Si la canción está pausada, la reproduce
   if (audio.paused) {
