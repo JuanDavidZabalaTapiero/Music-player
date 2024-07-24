@@ -1,7 +1,6 @@
 // 1. SE DESCARGAN LOS ARCHIVOS IMPORTANTES
 // ------------------------------------------------------
 
-// Lista de recursos mp3 a cargar
 const mp3Resources = [
   'src/songs/Hymn for the Weekend - (Radio Edit).mp3',
   'src/songs/Green Day - American Idiot lyrics [1080p].mp3',
@@ -27,25 +26,51 @@ const mp3Resources = [
   'src/img/The_Weeknd_-_Blinding_Lights-dif.png',
 ];
 
-// Función para cargar los archivos mp3
-function loadMP3Files(files, callback) {
+// Función para cargar los archivos
+function loadFiles(files, callback) {
   let loaded = 0;
   const total = files.length;
 
   files.forEach((url) => {
-    const audio = new Audio();
-    audio.src = url;
-    audio.oncanplaythrough = () => {
+    let media;
+    if (url.endsWith('.mp3')) {
+      media = new Audio();
+    } else if (url.endsWith('.png')) {
+      media = new Image();
+    }
+
+    if (media) {
+      media.src = url;
+      media.oncanplaythrough = media.onload = () => {
+        loaded++;
+        if (loaded === total) {
+          callback();
+        }
+      };
+      // MANEJAR ERRORES
+      media.onerror = () => {
+        console.error(`Error al descargar el archivo: ${url}`);
+        loaded++;
+        if (loaded === total) {
+          callback();
+        }
+      };
+    } else {
+      console.warn(`Archivo no soportado: ${url}`);
       loaded++;
       if (loaded === total) {
         callback();
       }
-    };
+    }
   });
 }
 
-// Cargar los archivos mp3 y luego inicializar la aplicación
-loadMP3Files(mp3Resources);
+// Inicializar la aplicación después de cargar los archivos
+loadFiles(mp3Resources, function () {
+  console.log('Todos los archivos se descargaron correctamente!');
+  // Aquí puedes inicializar la aplicación
+  // initApp();
+});
 
 // 2. CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
 // ------------------------------------------------------  
