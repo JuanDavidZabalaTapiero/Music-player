@@ -1,3 +1,6 @@
+// 1. SE DESCARGAN LOS ARCHIVOS IMPORTANTES
+// ------------------------------------------------------
+
 // Lista de recursos mp3 a cargar
 const mp3Resources = [
   'src/songs/Hymn for the Weekend - (Radio Edit).mp3',
@@ -41,17 +44,12 @@ function loadMP3Files(files, callback) {
   });
 }
 
-// Inicializar la aplicación
-function initializeApp() {
-  // Esconde la pantalla de carga y muestra el contenido principal
-  document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-}
-
 // Cargar los archivos mp3 y luego inicializar la aplicación
-loadMP3Files(mp3Resources, initializeApp);
+loadMP3Files(mp3Resources);
 
-// 1. CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
+// 2. CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
+// ------------------------------------------------------  
+
 window.addEventListener("load", function () {
   // Establece un temporizador de 1 segundo
   setTimeout(function () {
@@ -78,7 +76,8 @@ document.querySelectorAll(".song").forEach(function (songElement) {
   songs.push(songElement);
 });
 
-// 2. PARA REPRODUCIR LA CANCIÓN
+// 3. PARA REPRODUCIR LA CANCIÓN
+// ------------------------------------------------------
 
 // Función para reproducir una canción
 function playSong(songElement) {
@@ -107,17 +106,17 @@ function playSong(songElement) {
 
       var caratula = document.querySelector(".caratula");
 
+      var contCara = caratula.querySelector(".cont-cara");
+
+      // CAMBIAR EL FONDO DIFUMINADO
+      contCara.style.backgroundImage = `url(${imageD})`;
+
       // CAMBIAR EL ARTISTA
       caratula.querySelector("p").textContent = artist;
       // CAMBIAR LA IMG MAIN
       caratula.querySelector(".main-part img").src = img;
       // CAMBIAR EL TÍTULO
       caratula.querySelector("h2").textContent = title;
-
-      var contCara = caratula.querySelector(".cont-cara");
-
-      // CAMBIAR EL FONDO DIFUMINADO
-      contCara.style.backgroundImage = `url(${imageD})`;
 
       // HACER VISIBLE A LA CARÁTULA
       caratula.classList.add("visible");
@@ -258,7 +257,8 @@ document.querySelectorAll(".column-1").forEach(function (element, index) {
   });
 });
 
-// 3. BOTONES Y ELEMENTOS DE LA CARÁTULA DE LA CANCIÓN
+// 4. BOTONES Y ELEMENTOS DE LA CARÁTULA DE LA CANCIÓN
+// ------------------------------------------------------
 
 // Reproducir la canción anterior
 document
