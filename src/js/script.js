@@ -1,3 +1,56 @@
+// Lista de recursos mp3 a cargar
+const mp3Resources = [
+  'src/songs/Hymn for the Weekend - (Radio Edit).mp3',
+  'src/songs/Green Day - American Idiot lyrics [1080p].mp3',
+  'src/songs/Alan Walker - Faded.mp3',
+  'src/songs/Manuel Turizo - La Bachata.mp3',
+  'src/songs/Rammstein - Du Hast (Official 4K Video).mp3',
+  'src/songs/Thriller (2003 Edit).mp3',
+  'src/songs/The-Weeknd-Blinding-Lights-(Official Audio).mp3',
+  'src/songs/In The End [Official HD Music Video] - Linkin Park.mp3',
+  'src/songs/System Of A Down - Chop Suey! (Official HD Video).mp3',
+  'src/songs/Kiss Me More.mp3',
+  'src/songs/Rauw Alejandro - Todo de Ti (LetraLyrics).mp3',
+  'src/img/american iditot - green day dif.png',
+  'src/img/ChopSuey-System-Of-A-Down-dif.png',
+  'src/img/Coldplay,_Hymn_for_the_Weekend dif.png',
+  'src/img/Du-hast-Rammstein-dif.png',
+  'src/img/faded-alanwalkerdif.png',
+  'src/img/Kiss-me-more-Doja-cat-dif.png',
+  'src/img/la-bachata-manuel-turizo-dif.png',
+  'src/img/LinkinParkIntheEnd-dif.png',
+  'src/img/Michael_Jackson_-_Thriller-dif.png',
+  'src/img/Rauw-Alejandro-Todo-de-Ti-dif.png',
+  'src/img/The_Weeknd_-_Blinding_Lights-dif.png',
+];
+
+// Función para cargar los archivos mp3
+function loadMP3Files(files, callback) {
+  let loaded = 0;
+  const total = files.length;
+
+  files.forEach((url) => {
+    const audio = new Audio();
+    audio.src = url;
+    audio.oncanplaythrough = () => {
+      loaded++;
+      if (loaded === total) {
+        callback();
+      }
+    };
+  });
+}
+
+// Inicializar la aplicación
+function initializeApp() {
+  // Esconde la pantalla de carga y muestra el contenido principal
+  document.getElementById('loading-screen').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+}
+
+// Cargar los archivos mp3 y luego inicializar la aplicación
+loadMP3Files(mp3Resources, initializeApp);
+
 // 1. CERRAR LA VISTA DE INICIO (PRESENTACIÓN DE LA APP)
 window.addEventListener("load", function () {
   // Establece un temporizador de 1 segundo
